@@ -95,9 +95,11 @@ setup.sh
 mkfifo /app/vendor/nginx/logs/error.log
 mkfifo /app/vendor/nginx/logs/access.log
 mkfifo /app/vendor/php/var/log/error_log
+mkfifo /app/vendor/php/var/log/php-fpm.log
 tail -F /app/vendor/nginx/logs/error.log  & 
 tail -F /app/vendor/nginx/logs/access.log &
 tail -F /app/vendor/php/var/log/error_log &
+tail -F /app/vendor/php/var/log/php-fpm.log &
 
 php-fpm
 nginx
