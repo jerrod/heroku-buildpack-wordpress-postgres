@@ -90,7 +90,15 @@ cat >>bin/start.sh <<EOF
 
 echo "Starting nginx"
 setup.sh
-(tail -qF -n 0 /app/vendor/nginx/logs/*.log /app/vendor/php/var/log/*.log &)
+# (tail -qF -n 0 /app/vendor/nginx/logs/*.log /app/vendor/php/var/log/*.log &)
+
+mkfifo /app/vendor/nginx/logs/error.log
+mkfifo /app/vendor/nginx/logs/access.log
+mkfifo /app/vendor/php/var/log/error_log
+tail -F /app/vendor/nginx/logs/error.log  & 
+tail -F /app/vendor/nginx/logs/access.log &
+tail -F /app/vendor/php/var/log/error_log &
+
 php-fpm
 nginx
 EOF
