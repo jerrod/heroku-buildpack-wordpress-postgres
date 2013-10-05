@@ -1,4 +1,4 @@
-# Heroku buildpack: Wordpress on Heroku
+# Heroku buildpack: Wordpress on Heroku with Postgresql
 
 ### This is a Heroku buildpack for running [Wordpress](http://wordpress.org) on [Heroku](http://heroku.com)
 
